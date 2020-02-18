@@ -128,8 +128,12 @@ class HBNBCommand(cmd.Cmd):
                     print("** instance id missing **")
             elif len(lis) == 2:
                 concat = lis[0] + "." + lis[1]
-                if not data.get(concat):
+                if lis[0] not in classes:
+                    print("** class doesn't exist **")
+
+                elif not data.get(concat):
                     print("** no instance found **")
+
                 else:
                     print("** attribute name missing **")
 
