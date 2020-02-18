@@ -144,12 +144,13 @@ class HBNBCommand(cmd.Cmd):
                     lis[3] = com[1]
 
                 if (lis[2] in list_Int):
+                    num_int = lis[3]
+                    l = num_int.split('.')
+                    lis[3] = l[0]
                     try:
                         lis[3] = int(lis[3])
                     except:
-                        num_int = lis[3].strip('"')
-                        l = num_int.split('.')
-                        lis[3] = int(l[0])
+                        pass
                 elif (lis[2] in list_float):
                     try:
                         data_float = float(lis[3])
