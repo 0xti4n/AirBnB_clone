@@ -80,7 +80,7 @@ class HBNBCommand(cmd.Cmd):
                     flag = 0
                     for k, v in data.copy().items():
                         token = k.split('.')
-                        if lis[1] == token[1]:
+                        if lis[1] == token[1] and lis[0] == token[0]:
                             flag = 1
                             data[k] = v.to_dict()
                             del data[k]
@@ -136,19 +136,23 @@ class HBNBCommand(cmd.Cmd):
             elif len(lis) == 3:
                 print("** value missing **")
             else:
+                list_Int = ["number_rooms", "number_bathrooms", "max_guest", "price_by_night"]
+                list_float = ["latitude", "longitude"]
                 if lis[3][0] == '"':
                     com = arg.split('"')
                     lis[3] = com[1]
-                else:
+
+                if (lis[2] in list_Int):
                     try:
                         lis[3] = int(lis[3])
-                        if (lis[3].is_integer()):
-                            pass
-                        else:
-                            try:
-                                lis[3] = float(lis[3])
-                            except:
-                                pass
+                    except:
+                        num_int = lis[3].strip('"')
+                        l = num_int.split('.')
+                        lis[3] = int(l[0])
+                elif (lis[2] in list_float):
+                    try:
+                        data_float = float(lis[3])
+                        lis[3] = data_float
                     except:
                         pass
                 concat = lis[0] + "." + lis[1]
