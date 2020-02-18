@@ -113,64 +113,69 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+    def validator(self, lis):
+        """ Validator """
+        if len(lis) == 0:
+            print("** class name missing **")
+            return
+        elif lis[0] not in classes:
+            print("** class doesn't exist **")
+            return
+        elif len(lis) < 2:
+            print("** instance id missing **")
+            return
+        return (lis[0] + "." + lis[1])
+
     def do_update(self, arg):
         """Update instances"""
+        copy = arg
+        lis = copy.split()
         data = storage.all()
-        if len(arg) == 0:
-            print("** class name missing **")
-        else:
-            lis_copy = arg
-            lis = lis_copy.split(' ')
-            if len(lis) == 1:
-                if lis[0] not in classes:
-                    print("** class doesn't exist **")
-                else:
-                    print("** instance id missing **")
-            elif len(lis) == 2:
-                concat = lis[0] + "." + lis[1]
-                if lis[0] not in classes:
-                    print("** class doesn't exist **")
+        obj = self.validator(lis)
 
-                elif not data.get(concat):
+        if obj:
+            list_Int = ["number_rooms", "number_bathrooms",
+                        "max_guest", "price_by_night"]
+            list_float = ["latitude", "longitude"]
+            if len(lis) < 3:
+                if not data.get(obj):
                     print("** no instance found **")
-
+                    return
                 else:
                     print("** attribute name missing **")
-
-            elif len(lis) == 3:
-                if lis[0] not in classes:
-                    print("** class doesn't exist **")
+                    return
+            elif len(lis) < 4:
+                if not data.get(obj):
+                    print("** no instance found **")
+                    return
                 else:
                     print("** value missing **")
-            else:
-                list_Int = ["number_rooms", "number_bathrooms",
-                            "max_guest", "price_by_night"]
-                list_float = ["latitude", "longitude"]
-                if lis[3][0] == '"':
-                    com = arg.split('"')
-                    lis[3] = com[1]
+                    return
+            if lis[3][0] == '"':
+                com = arg.split('"')
+                lis[3] = com[1]
 
-                if (lis[2] in list_Int):
-                    num_int = lis[3]
-                    l = num_int.split('.')
-                    lis[3] = l[0]
-                    try:
-                        lis[3] = int(lis[3])
-                    except:
-                        pass
-                elif (lis[2] in list_float):
-                    try:
-                        data_float = float(lis[3])
-                        lis[3] = data_float
-                    except:
-                        pass
-                concat = lis[0] + "." + lis[1]
-                if data.get(concat):
-                    obj = data[concat]
-                    setattr(obj, lis[2], lis[3])
-                    storage.save()
-                else:
-                    print("** no instance found **")
+            if (lis[2] in list_Int):
+                num_int = lis[3]
+                l = num_int.split('.')
+                lis[3] = l[0]
+                try:
+                    lis[3] = int(lis[3])
+                except:
+                    pass
+            elif (lis[2] in list_float):
+                try:
+                    data_float = float(lis[3])
+                    lis[3] = data_float
+                except:
+                    pass
+
+            if data.get(obj):
+                ref = data[obj]
+                setattr(ref, lis[2], lis[3])
+                storage.save()
+            else:
+                print("** no instance found **")
 
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
 
