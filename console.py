@@ -17,13 +17,8 @@ classes = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
 
 
 class HBNBCommand(cmd.Cmd):
-    intro = 'Welcome to HBNB console.   Type "help" or "?" to list commands.\n'
+    doc_header = "\nDocumented commands (type help <topic>):"
     prompt = '(hbnb) '
-    doc_header = "Commands that can help you:\ntype \
-\"help <command>\" to know more:"
-    undoc_header = "HBNB Comands:"
-    ruler = '='
-    file = None
 
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
     # Commands to HBNB:
@@ -51,6 +46,7 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print("** instance id missing **")
             else:
+                flag = 0
                 if lis[0] not in classes:
                     print("** class doesn't exist **")
                 else:
@@ -58,11 +54,11 @@ class HBNBCommand(cmd.Cmd):
                     flag = 0
                     for k, v in data.items():
                         token = k.split('.')
-                        if lis[1] == token[1]:
+                        if lis[1] == token[1] and lis[0] == token[0]:
                             print(v)
                             flag = 1
-                if flag != 1:
-                    print("** no instance found **")
+                    if flag != 1:
+                        print("** no instance found **")
 
     def do_destroy(self, arg):
         """Destroy instances"""
@@ -166,24 +162,8 @@ class HBNBCommand(cmd.Cmd):
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
 
     # Basic commands
-    last_output = ''
-
-    def do_shell(self, line):
-        """ Run a shell command """
-        # print("running shell command:", line)
-        sub_cmd = subprocess.Popen(line, shell=True, stdout=subprocess.PIPE)
-        output = sub_cmd.communicate()[0].decode('utf-8')
-        print(output)
-        self.last_output = output
-
-    def do_Hello(self, arg):
-        print("Hello, welcome to HBNB console")
-
-    def do_prompt(self, line):
-        """ Change the interactive prompt """
-        self.prompt = line + ': '
-
     def do_EOF(self, arg):
+        print("")
         return True
 
     def do_quit(self, arg):
@@ -192,8 +172,6 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         pass
 
-    do_q = do_quit
-
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
     # Docummented comands
     def help_quit(self):
@@ -201,15 +179,6 @@ class HBNBCommand(cmd.Cmd):
 
     def help_EOF(self):
         print("Command to close the console")
-
-    def help_q(self):
-        print("Shortcut for \"quit\" command\n")
-
-    def help_Hello(self):
-        print("Print a welcome message\n")
-
-    def help_emptyline(self):
-        print("Do nothing\n")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
