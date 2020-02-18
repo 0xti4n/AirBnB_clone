@@ -136,7 +136,8 @@ class HBNBCommand(cmd.Cmd):
             elif len(lis) == 3:
                 print("** value missing **")
             else:
-                list_Int = ["number_rooms", "number_bathrooms", "max_guest", "price_by_night"]
+                list_Int = ["number_rooms", "number_bathrooms",
+                            "max_guest", "price_by_night"]
                 list_float = ["latitude", "longitude"]
                 if lis[3][0] == '"':
                     com = arg.split('"')
