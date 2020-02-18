@@ -9,6 +9,7 @@ class BaseModel():
     """BaseModel"""
 
     def __init__(self, *args, **kwargs):
+        """ init """
         if len(kwargs) != 0:
             for k, v in kwargs.items():
                 if k != "__class__":
