@@ -77,5 +77,5 @@ Take from examples what you see in the follow image:
 Project provided by [Holberton](https://www.holbertonschool.com)
 
 ## By:
-[Cristian Gomez](https://twitter.com/cristianfg1702)
+[Cristian Gomez](https://twitter.com/cristianfg1702) - 
 [Jonatan Mazo](https://twitter.com/JonatanRMC)
