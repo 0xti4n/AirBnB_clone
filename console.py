@@ -182,9 +182,18 @@ class HBNBCommand(cmd.Cmd):
     # ADVANCED TASKS
     def default(self, line):
         """ Advanced task 11 """
+        data = storage.all()
         token = line.split('.')
         if token[0] in classes:
-            HBNBCommand.do_all(self, token[0].strip('('))
+            if token[1] == "all()":
+                HBNBCommand.do_all(self, token[0].strip('('))
+            elif token[1] == "count()":
+                con = 0
+                for k in data.keys():
+                    tok = k.split('.')
+                    if token[0] == tok[0]:
+                        con += 1
+                print(con)
 
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
