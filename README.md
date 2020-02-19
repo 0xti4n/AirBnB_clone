@@ -54,11 +54,28 @@ First you need to run the ```console.py```
 
 Then you need to know the comands that the console can run:
  - ```all```: Prints all string representation of all instances based or not on the class name.
+
+ sintax: ```all <class name>``` or ```all```
  - ```create```: Creates a new instance of ```BaseModel```, saves it (to the JSON file) and prints the ```id```.
+
+  sintax: ```create <class name>```
  - ```destroy```: Deletes an instance based on the class name and ```id``` (save the change into the JSON file).
+
+ sintax: ```destroy <class name> <id>```
  - ```show```: Prints the string representation of an instance based on the class name and ```id```.
+
+ sintax: ```show <class name> <id>```
  - ```update```: Updates an instance based on the class name and ```id``` by adding or updating attribute (save the change into the JSON file).
+
+ sintax: ```update <class name> <id> <attribute name> "<attribute value>"```
 If you need more info type: ```(hbnb) ?```or ```(hbnb) help```.
 
 Take from examples what you see in the follow image:
 ![console](./images/console.png)
+
+## Inspiration:
+Project provided by [Holberton](https://www.holbertonschool.com)
+
+## By:
+[Cristian Gomez](https://twitter.com/cristianfg1702)
+[Jonatan Mazo](https://twitter.com/JonatanRMC)
