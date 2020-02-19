@@ -1,5 +1,6 @@
 # AirBnB clone - The console
 ![HBNB Header](/AirBnB_clone/images/HBNB Header.png)
+
 Project in which the base of the AirBnB clone will be created as a study method.
 
 All knowledge acquired in python will be implemented, its base structure will be:
@@ -42,7 +43,9 @@ You only need to run ```console.py``` file with this command ```./console.py```
 This command must be executed in the root folder of the project like:
 
 ```vagrant@vagrant-ubuntu-trusty-64:~/home/user/Documents/AirBnB_clone$ ./console.py```
+
 make sure all files are in the root directory.
+
 ![Folder](/AirBnB_clone/images/Folder.png)
 
 ## Examples of use:
