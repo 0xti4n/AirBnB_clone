@@ -1,14 +1,16 @@
 # AirBnB clone - The console
+![HBNB Header](/AirBnB_clone/images/HBNB Header.png)
 Project in which the base of the AirBnB clone will be created as a study method.
+
 All knowledge acquired in python will be implemented, its base structure will be:
  - Create the basic classes where the most basic attributes will be saved, such as the time it was created and its respective ```ID```.
  - Create the basic methods that our interpreter will execute when we enter the commands corresponding to those methods.
  - Verify each of the functions so that they execute with all possible cases to avoid errors.
 Each of these cases will be looked at later.
 
-To create this project we need severeal steps:
- - First step: Write a command interpreter to manage your AirBnB objects:
+## First step: Write a command interpreter to manage your AirBnB objects:
  This is the first step towards building your first full web application: the AirBnB clone. This first step is very important because you will use what you build during this project with all other following projects: HTML/CSS templating, database storage, API, front-end integration…
+
  Each task is linked and will help you to:
   - put in place a parent ```class (called BaseModel)``` to take care of the initialization, serialization and deserialization of your future instances
   - create a simple flow of serialization/deserialization: ```Instance <-> Dictionary <-> JSON string <-> file```
@@ -25,6 +27,7 @@ A command interpreter is the part of a computer operating system that understand
 
 ## Technologies:
 In this project we used ```Python 3.4``` and was verified with ```pep8 1.7```
+
 We import this modules to create the console:
  - import cmd
  - import sys
@@ -33,8 +36,24 @@ We import this modules to create the console:
 
 ## Launch this Console:
 How to run a project?
+
 You only need to run ```console.py``` file with this command ```./console.py```
+
 This command must be executed in the root folder of the project like:
+
 ```vagrant@vagrant-ubuntu-trusty-64:~/home/user/Documents/AirBnB_clone$ ./console.py```
 make sure all files are in the root directory.
-![HBNB Header.png](ścieżka/do/pliku)
+![Folder](/AirBnB_clone/images/Folder.png)
+
+## Examples of use:
+First you need to run the ```console.py```
+
+Then you need to know the comands that the console can run:
+ - ```all```: Prints all string representation of all instances based or not on the class name.
+ - ```create```: Creates a new instance of ```BaseModel```, saves it (to the JSON file) and prints the ```id```.
+ - ```destroy```: Deletes an instance based on the class name and ```id``` (save the change into the JSON file).
+ - ```show```: Prints the string representation of an instance based on the class name and ```id```.
+ - ```update```: Updates an instance based on the class name and ```id``` by adding or updating attribute (save the change into the JSON file).
+If you need more info type: ```(hbnb) ?```or ```(hbnb) help```.
+
+Take from examples what you see in the following images.
