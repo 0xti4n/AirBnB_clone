@@ -1,5 +1,6 @@
 # AirBnB clone - The console
-![HBNB Header](/AirBnB_clone/images/HBNB Header.png)
+
+![HBNB](./images/HBNB_Header.png)
 
 Project in which the base of the AirBnB clone will be created as a study method.
 
@@ -46,7 +47,7 @@ This command must be executed in the root folder of the project like:
 
 make sure all files are in the root directory.
 
-![Folder](/AirBnB_clone/images/Folder.png)
+![Folder](./images/Folder.png)
 
 ## Examples of use:
 First you need to run the ```console.py```
@@ -59,4 +60,5 @@ Then you need to know the comands that the console can run:
  - ```update```: Updates an instance based on the class name and ```id``` by adding or updating attribute (save the change into the JSON file).
 If you need more info type: ```(hbnb) ?```or ```(hbnb) help```.
 
-Take from examples what you see in the following images.
+Take from examples what you see in the follow image:
+![console](./images/console.png)
