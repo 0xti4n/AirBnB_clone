@@ -3,9 +3,6 @@
 import unittest
 import pep8
 import json
-import uuid
-import models
-from datetime import datetime
 import os
 from models.base_model import BaseModel
 from models.user import User
@@ -100,7 +97,7 @@ class TestFileStorage(unittest.TestCase):
             lines = f.readlines()
         try:
             os.remove(path)
-        except:
+        except Exception:
             pass
         self.storage.save()
         with open(path, 'r') as f:
@@ -108,7 +105,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(lines, lines2)
         try:
             os.remove(path)
-        except:
+        except Exception:
             pass
         with open(path, "w") as f:
             f.write("{}")
@@ -116,3 +113,44 @@ class TestFileStorage(unittest.TestCase):
             for line in r:
                 self.assertEqual(line, "{}")
         self.assertIs(self.storage.reload(), None)
+
+    def test_file_path(self):
+        """
+        Test to see if the file_self.path exist
+        """
+        try:
+            self.assertEqual(FileStorage._FileStorage__file_path, self.path)
+        except AttributeError:
+            pass
+
+    def test_objects_exist_storage(self):
+        """
+        Test if __objects exist and was created
+        """
+        dic = self.storage.all()
+        try:
+            self.assertEqual(FileStorage._FileStorage__objects, dic)
+            self.assertTrue(FileStorage._FileStorage__objects)
+        except AttributeError:
+            pass
+
+    def test_save(self):
+        """
+        Testing the save method
+        """
+        bm = BaseModel()
+        bm.save()
+        self.assertTrue(os.path.exists(self.path))
+        bm.name = "Testing"
+        bm.number = 1
+        bm.save()
+        self.assertTrue(os.path.exists(self.path))
+        dic = {}
+        with open('file.json', 'r') as fjson:
+            dic = json.loads(fjson.read())
+        bm_key = bm.__class__.__name__ + '.' + bm.id
+        self.assertDictEqual(bm.to_dict(), dic[bm_key])
+
+
+if __name__ == "__main__":
+    unittest.main()
