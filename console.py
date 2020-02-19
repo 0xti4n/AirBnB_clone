@@ -187,13 +187,23 @@ class HBNBCommand(cmd.Cmd):
         if token[0] in classes:
             if token[1] == "all()":
                 HBNBCommand.do_all(self, token[0].strip('('))
+
             elif token[1] == "count()":
                 con = 0
                 for k in data.keys():
-                    tok = k.split('.')
-                    if token[0] == tok[0]:
+                    key_tok = k.split('.')
+                    if token[0] == key_tok[0]:
                         con += 1
                 print(con)
+
+            cpy1_tok = token[1].split('"')
+            cpy2_tok = cpy1_tok[0].strip("(")
+            if cpy2_tok == "show":
+                concat = token[0] + "." + cpy1_tok[1]
+                if data.get(concat):
+                    print(data[concat])
+                else:
+                    print("** no instance found **")
 
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
