@@ -178,6 +178,16 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
+    """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
+    # ADVANCED TASKS
+    def default(self, line):
+        """ Advanced task 11 """
+        token = line.split('.')
+        if token[0] in classes:
+            HBNBCommand.do_all(self, token[0].strip('('))
+
+    """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
+    """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
 
     # Basic commands
     def do_EOF(self, arg):
