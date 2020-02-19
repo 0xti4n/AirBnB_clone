@@ -205,6 +205,10 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print("** no instance found **")
 
+            if cpy2_tok == "destroy":
+                concat = token[0] + " " + cpy1_tok[1]
+                HBNBCommand.do_destroy(self, concat)
+
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
 
