@@ -20,9 +20,11 @@ class Testcity(unittest.TestCase):
 Found code style errors (and warnings).")
 
     def test_class(self):
+        """ test """
         city1 = City()
         self.assertEqual(city1.__class__.__name__, "City")
 
     def test_father(self):
+        """ Test """
         city1 = City()
         self.assertTrue(issubclass(city1.__class__, BaseModel))

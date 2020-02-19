@@ -20,10 +20,12 @@ class Teststate(unittest.TestCase):
 Found code style errors (and warnings).")
 
     def test_class(self):
+        """ Test """
         state1 = State()
         self.assertEqual(state1.__class__.__name__, "State")
 
     def test_father(self):
+        """ Test """
         state1 = State()
         self.assertEqual(state1.__class__.__name__, "State")
 

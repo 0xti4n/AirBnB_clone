@@ -20,12 +20,14 @@ class Testreview(unittest.TestCase):
 Found code style errors (and warnings).")
 
     def test_class(self):
+        """ Test """
         rev1 = Review()
         self.assertEqual(rev1.__class__.__name__, "Review")
 
-        def test_father(self):
-            rev1 = Review()
-            self.assertTrue(issubclass(rev1.__class__, BaseModel))
+    def test_father(self):
+        """ Test """
+        rev1 = Review()
+        self.assertTrue(issubclass(rev1.__class__, BaseModel))
 
     def test_review(self):
         """
