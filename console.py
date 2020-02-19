@@ -4,7 +4,6 @@ import sys
 import json
 import subprocess
 import models
-from models import storage
 from models.user import User
 from models.state import State
 from models.city import City
@@ -50,7 +49,7 @@ class HBNBCommand(cmd.Cmd):
                 if lis[0] not in classes:
                     print("** class doesn't exist **")
                 else:
-                    data = storage.all()
+                    data = models.storage.all()
                     flag = 0
                     for k, v in data.items():
                         token = k.split('.')
@@ -76,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
                 if lis[0] not in classes:
                     print("** class doesn't exist **")
                 else:
-                    data = storage.all()
+                    data = models.storage.all()
                     flag = 0
                     for k, v in data.copy().items():
                         token = k.split('.')
@@ -84,15 +83,15 @@ class HBNBCommand(cmd.Cmd):
                             flag = 1
                             data[k] = v.to_dict()
                             del data[k]
+                    models.storage.save()
                     if flag != 1:
                         print("** no instance found **")
-                    storage.save()
 
     def do_all(self, arg):
         """Print all instances"""
         args = arg.split()
         if len(args) == 0:
-            data = storage.all()
+            data = models.storage.all()
             l = []
             for v in data.values():
                 l.append(str(v))
@@ -130,7 +129,7 @@ class HBNBCommand(cmd.Cmd):
         """Update instances"""
         copy = arg
         lis = copy.split()
-        data = storage.all()
+        data = models.storage.all()
         obj = self.validator(lis)
 
         if obj:
@@ -173,7 +172,7 @@ class HBNBCommand(cmd.Cmd):
             if data.get(obj):
                 ref = data[obj]
                 setattr(ref, lis[2], lis[3])
-                storage.save()
+                models.storage.all()[obj].save()
             else:
                 print("** no instance found **")
 
@@ -182,7 +181,7 @@ class HBNBCommand(cmd.Cmd):
     # ADVANCED TASKS
     def default(self, line):
         """ Advanced task 11 """
-        data = storage.all()
+        data = models.storage.all()
         token = line.split('.')
         if token[0] in classes:
             if token[1] == "all()":
@@ -226,7 +225,7 @@ class HBNBCommand(cmd.Cmd):
 
                     for i in range(0, len(l2), 2):
                         concat = token[0] + " " + cpy1_tok[1] + " \
-" + l2[i] + " " + l2[i + 1]
+" + l2[i] + " " + str(l2[i + 1])
                         HBNBCommand.do_update(self, concat)
 
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
