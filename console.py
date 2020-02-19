@@ -209,6 +209,12 @@ class HBNBCommand(cmd.Cmd):
                 concat = token[0] + " " + cpy1_tok[1]
                 HBNBCommand.do_destroy(self, concat)
 
+            elif cpy2_tok == "update":
+                if len(cpy1_tok) >= 6:
+                    l = [token[0], cpy1_tok[1], cpy1_tok[3], cpy1_tok[5]]
+                    concat = l[0] + " " + l[1] + " " + l[2] + " " + l[3]
+                    HBNBCommand.do_update(self, concat)
+
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
 
