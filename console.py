@@ -209,24 +209,13 @@ class HBNBCommand(cmd.Cmd):
                 HBNBCommand.do_destroy(self, concat)
 
             elif cpy2_tok == "update":
-                if cpy1_tok[2] == ", ":
+                if '{' not in line:
                     l = [token[0], cpy1_tok[1], cpy1_tok[3], cpy1_tok[5]]
-                    concat = l[0] + " " + l[1] + " " + l[2] + " " + l[3]
+                    concat = l[0] + " " + l[1] + " " + l[2] + " " + '\
+"' + l[3] + '"'
                     HBNBCommand.do_update(self, concat)
-                else:
-                    l = []
-                    l2 = []
-                    con = 0
-                    for i in range(2, len(cpy1_tok)):
-                        l.append(cpy1_tok[i])
-                        if l[con] != ", ":
-                            l2.append(l[con].strip(", {:'})"))
-                        con += 1
-
-                    for i in range(0, len(l2), 2):
-                        concat = token[0] + " " + cpy1_tok[1] + " \
-" + l2[i] + " " + str(l2[i + 1])
-                        HBNBCommand.do_update(self, concat)
+        else:
+            print("Portese serio")
 
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
