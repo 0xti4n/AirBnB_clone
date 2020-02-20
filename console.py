@@ -214,6 +214,15 @@ class HBNBCommand(cmd.Cmd):
                     concat = l[0] + " " + l[1] + " " + l[2] + " " + '\
 "' + l[3] + '"'
                     HBNBCommand.do_update(self, concat)
+                else:
+                    cpy3_tok = token[1].split('(')
+                    cpy4_tok = "{" + cpy3_tok[1].split(', {')[1].strip(')')
+                    cpy5_tok = cpy4_tok.replace("'", '"')
+                    dic = json.loads(cpy5_tok)
+                    for k, v in dic.items():
+                        concat = token[0] + " " + cpy1_tok[1] + " \
+" + str(k) + " " + '"' + str(v) + '"'
+                        HBNBCommand.do_update(self, concat)
         else:
             print("Portese serio")
 
