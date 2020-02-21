@@ -224,7 +224,7 @@ class HBNBCommand(cmd.Cmd):
 " + str(k) + " " + '"' + str(v) + '"'
                         HBNBCommand.do_update(self, concat)
         else:
-            print("Portese serio")
+            print("Command not found")
 
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
     """ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ """
