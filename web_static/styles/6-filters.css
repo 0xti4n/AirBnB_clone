@@ -24,11 +24,12 @@ button{
 button:hover{
     opacity: .9;
 }
-.locations{
+.locations {
     height: 100%;
     width: 25%;
     border-right: 1px #dddddd solid;
 }
+
 .amenities{
     height: 100%;
     width: 25%;
@@ -46,21 +47,23 @@ h4{
 .filters div h3{
     margin-left: 35px;
 }
+
 .popover{
     display:none;
+    position: absolute;
+    top: 56px;
+    padding-top: 5px;
+    padding-left: 19px;
     background-color: #FAFAFA;
     border: 1px #dddddd solid;
     border-radius: 4px;
-    padding-top: 10%;
-    padding-bottom: 10%;
-    padding-left: 10%;
+    width: 23%;
 }
 
 li{
     list-style: none;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
+    margin-top: 3px;
     padding-left: 10px;
     line-height: 23px;
 }
@@ -68,7 +71,7 @@ li{
 h2{
     font-size: 16px;
     margin: 0;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 5px;
     margin-left: -15px;
     padding: 0;
