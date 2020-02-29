@@ -1,24 +1,26 @@
-.filters {
-    color: white;
+.filters{
+    display: flex;
+    align-items: center;
+    background-color: white;
     height: 70px;
     width: 100%;
-    border: 1px solid #DDDDDD;
+    border: solid 1px #DDDDDD;
     border-radius: 4px;
+    position: relative;
+    resize: vertical;
 }
-
-button {
+button{
+    position: absolute;
+    right: 30px;
     font-size: 18px;
-    background-color: #FF5A5F;
-    color: #FFFFFF;
+    background-color: #ff5a5f;
+    color: #ffffff;
     height: 48px;
     width: 20%;
+    border: 0;
     border-radius: 4px;
-    border: 0px;
-    margin-top: 12px;
-    margin-left: 77%;
     cursor: pointer;
 }
-
-button:hover {
+button:hover{
     opacity: .9;
 }
