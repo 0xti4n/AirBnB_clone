@@ -93,3 +93,15 @@ article h2 {
 .max_guest, .number_rooms, .number_bathrooms p {
     padding-left: 25px;
 }
+
+.user {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 0px;
+}
+
+.description {
+    margin-top: -24px;
+    text-align: justify;
+}
+

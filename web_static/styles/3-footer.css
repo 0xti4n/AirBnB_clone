@@ -2,7 +2,7 @@ footer{
     background-color: white;
     height: 60px; 
     width: 100%;
-    position:absolute;
+    position: relative;
     border-top: 1px solid #CCCCCC;
     bottom: 0
 }
